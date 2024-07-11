@@ -7,6 +7,7 @@ urlpatterns = [
     path('driver_update',views.driver_update,name="driver_update"),
     path('driver_view',views.driver_view,name="driver_view"),
     path('bus_view',views.bus_view,name="bus_view"),
+    path('route_view',views.route_view,name="route_view"),
     path('driver_search/<str:driver_id>',views.driver_search,name="driver_search"),
     path('trip_insert',views.trip_insert,name="trip_insert"),
     path('bus_insert',views.bus_insert,name="bus_insert"),

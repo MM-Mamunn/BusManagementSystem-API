@@ -7,8 +7,8 @@ DECLARE
 BEGIN
 	_users = (
 			SELECT JSON_AGG(u)
-			FROM (
-			select sum(payment), driver_id  from	 (select driver_id,payment,route_name from trip natural join route where driver_id = _driver_id  ) as temp group by driver_id 
+			FROM (	 (select driver_id
+			select sum(payment), driver_id  from,payment,route_name from trip natural join route where driver_id = _driver_id  ) as temp group by driver_id 
 			) u
 	)::JSON ;
 	

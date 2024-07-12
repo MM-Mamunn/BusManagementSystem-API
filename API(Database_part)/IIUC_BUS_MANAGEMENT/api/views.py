@@ -229,8 +229,6 @@ def count_payment(request):
 
 
 
-
-
 @api_view(['GET','POST'])
 def trip_all(request):
     if request.method == "GET":
@@ -241,6 +239,33 @@ def trip_all(request):
             database.cur.execute("""
                 select trip_all(%s, %s);
             """,(page,limit))
+            result = json.loads(json.dumps(database.cur.fetchone()[0]))
+
+            database.conn.commit()
+            return Response({
+                "data": result
+            }
+            )
+
+
+        except(Exception, database.Error) as error:
+            database.conn.commit()
+            print(error)
+            return Response({"message": "GET called but error", "error": error});
+
+@api_view(['GET','POST'])
+def oil_count(request):
+    print("hi hi");
+    if request.method == "GET":
+        try:
+            page = request.GET.get("page",1)
+            limit = request.GET.get("limit", 5)
+            date1 = request.GET.get("date1","'2002-01-01'")
+            date2 = request.GET.get("date2","'2032-01-01'")
+
+            database.cur.execute("""
+                select oil_count(%s, %s, %s,%s);
+            """,(page,limit,date1,date2,))
             result = json.loads(json.dumps(database.cur.fetchone()[0]))
 
             database.conn.commit()

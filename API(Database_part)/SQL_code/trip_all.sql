@@ -24,5 +24,3 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---page then limit
-select driver_view(2,2)

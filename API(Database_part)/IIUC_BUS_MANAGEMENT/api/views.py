@@ -68,6 +68,32 @@ def driver_update(request):
             return Response({"message": "Post called but error", "error": error});
 
 
+@api_view(['GET','POST','PATCH'])
+def bus_update(request):
+    if request.method == "PATCH":
+        try:
+                
+                body = json.dumps(json.loads(request.body))
+                print(body)
+                
+                database.cur.execute("""
+                    select bus_update(%s) ;
+                """,(body,))
+                #result = json.loads(json.dumps(database.cur.fetchone()[0]))
+                database.conn.commit()
+                
+               
+                return Response(
+                    {
+                        "message": "success"
+                    }
+                )
+        except(Exception, database.Error) as error:
+            database.conn.commit()
+            print(error)
+            return Response({"message": "Post called but error", "error": error});
+
+
 
 # @api_view(['GET','POST','PATCH'])
 # def driver_update(request):
@@ -131,6 +157,31 @@ def driver_view(request):
 
             database.cur.execute("""
                 select driver_view(%s, %s);
+            """,(page,limit))
+            result = json.loads(json.dumps(database.cur.fetchone()[0]))
+
+            database.conn.commit()
+            return Response({
+                "data": result
+            }
+            )
+
+
+        except(Exception, database.Error) as error:
+            database.conn.commit()
+            print(error)
+            return Response({"message": "GET called but error", "error": error});
+
+
+@api_view(['GET','POST'])
+def maintanance_view(request):
+    if request.method == "GET":
+        try:
+            page = request.GET.get("page",1)
+            limit = request.GET.get("limit", 5)
+
+            database.cur.execute("""
+                select maintanance_view(%s, %s);
             """,(page,limit))
             result = json.loads(json.dumps(database.cur.fetchone()[0]))
 
@@ -331,6 +382,30 @@ def bus_view(request):
             print(error)
             return Response({"message": "GET called but error", "error": error});
 
+@api_view(['GET','POST'])
+def category_view(request):
+     if request.method == "GET":
+        try:
+            page = request.GET.get("page",1)
+            limit = request.GET.get("limit", 5)
+
+            database.cur.execute("""
+                select category_view(%s, %s);
+            """,(page,limit))
+            result = json.loads(json.dumps(database.cur.fetchone()[0]))
+
+            database.conn.commit()
+            return Response({
+                "data": result
+            }
+            )
+
+
+        except(Exception, database.Error) as error:
+            database.conn.commit()
+            print(error)
+            return Response({"message": "GET called but error", "error": error});
+
 
 @api_view(['GET','POST'])
 def route_view(request):
@@ -445,8 +520,8 @@ def number_of_trip(request):
         try:
             page = request.GET.get("page",1)
             limit = request.GET.get("limit", 3)
-            fromm = request.GET.get("fromm",'2023-01-01')
-            too = request.GET.get("too",'2023-12-30')
+            fromm = request.GET.get("date1",'2023-01-01')
+            too = request.GET.get("date2",'2023-12-30')
             database.cur.execute("""
                 select number_of_trip(%s, %s,%s,%s);
             """,(page,limit,fromm,too))
@@ -475,11 +550,11 @@ def total_distance(request):
         try:
             page = request.GET.get("page",1)
             limit = request.GET.get("limit", 3)
-            fromm = request.GET.get("fromm",'2023-01-01')
-            too = request.GET.get("too",'2023-12-30')
+            date1 = request.GET.get("date1",'2023-01-01')
+            date2 = request.GET.get("date2",'2023-12-30')
             database.cur.execute("""
                 select total_distance(%s, %s,%s,%s);
-            """,(page,limit,fromm,too))
+            """,(page,limit,date1,date2))
             result = json.loads(json.dumps(database.cur.fetchone()[0]))
 
             database.conn.commit()

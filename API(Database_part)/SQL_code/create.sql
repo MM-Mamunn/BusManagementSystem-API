@@ -24,6 +24,12 @@ CREATE TABLE bus (
     license_no varchar(30) NOT NULL,
     assign varchar(30) NOT NULL
 );
+ALTER TABLE bus
+ADD CONSTRAINT bus_category_fkey
+FOREIGN KEY (category)
+REFERENCES category (category)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
 
 
 CREATE TABLE route(
@@ -44,6 +50,14 @@ CREATE TABLE trip (
   FOREIGN KEY (bus_id) REFERENCES bus(bus_id) ON DELETE CASCADE,
   FOREIGN KEY (route_name) REFERENCES route(route_name) ON DELETE CASCADE
 );
+
+ALTER TABLE trip
+ADD CONSTRAINT trip_bus_id_fk
+FOREIGN KEY (bus_id)
+REFERENCES bus (bus_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
 ALTER TABLE trip
 ADD CONSTRAINT trip_driver_id_fkey
 FOREIGN KEY (driver_id)
@@ -68,5 +82,13 @@ ALTER TABLE maintanance
 ADD CONSTRAINT maintanance_driver_id_fkey
 FOREIGN KEY (driver_id)
 REFERENCES driver (driver_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+
+ALTER TABLE maintanance
+ADD CONSTRAINT maintanance_bus_id_fkey
+FOREIGN KEY (bus_id)
+REFERENCES bus (bus_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE;

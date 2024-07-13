@@ -5,8 +5,11 @@ from . import views
 urlpatterns = [
     path('driver_insert',views.driver_insert,name="driver_insert"),
     path('driver_update',views.driver_update,name="driver_update"),
+    path('bus_update',views.bus_update,name="bus_update"),
     path('driver_view',views.driver_view,name="driver_view"),
+    path('maintanance_view',views.maintanance_view,name="maintanance_view"),
     path('bus_view',views.bus_view,name="bus_view"),
+    path('category_view',views.category_view,name="category_view"),
     path('oil_count',views.oil_count,name="oil_count"),
     path('route_view',views.route_view,name="route_view"),
     # path('driver_search/<str:driver_id>',views.driver_search,name="driver_search"),

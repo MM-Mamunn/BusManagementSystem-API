@@ -9,7 +9,7 @@ BEGIN
 		SELECT JSON_AGG(u) 
 		FROM (
 			SELECT *
-			FROM bus
+			FROM bus natural join category
 			ORDER BY bus_id ASC
 			LIMIT _limit
 			OFFSET (_page - 1) * _limit

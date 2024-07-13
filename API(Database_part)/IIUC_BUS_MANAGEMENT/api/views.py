@@ -174,6 +174,32 @@ def search_trip(request):
             return Response({"message": "GET called but error", "error": error});
 
 @api_view(['GET','POST'])
+def search_driver(request):
+    if request.method == "GET":
+        try:
+            page = request.GET.get("page",1)
+            limit = request.GET.get("limit", 5)
+            driver_id = request.GET.get("driver_id",3)
+
+            database.cur.execute("""
+                select search_driver(%s);
+            """,(driver_id,))
+            # print(database.cur.fetchone()[0])
+            result = json.loads(json.dumps(database.cur.fetchone()[0]))
+            print(result)
+            database.conn.commit()
+            return Response({
+                "data": result
+            }
+            )
+
+
+        except(Exception, database.Error) as error:
+            database.conn.commit()
+            print(error)
+            return Response({"message": "GET called but error", "error": error});
+
+@api_view(['GET','POST'])
 def count_trip(request):
     if request.method == "GET":
         try:

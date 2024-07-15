@@ -35,7 +35,7 @@ Or
 env\Scripts\activate.bat
 ```
 
-5. Install Necessary Dependencies
+5. Install Necessary Dependencies:
 Install Django Rest Framework:
 ```
 pip install djangorestframework

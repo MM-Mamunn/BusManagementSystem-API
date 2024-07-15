@@ -1,3 +1,4 @@
+Clone the database and the API part of the project:
 Clone this repository to your computer.
 Open pgAdmin on your computer.
 Create a new database (e.g “xyz”)
@@ -37,6 +38,12 @@ In the terminal paste  “pip install djangorestframework”
 Press enter 
 Step 2 : 
 “pip install psycopg2-binary”
+Press enter.
+
+
+Step 3:
+“
+pip install django-cors-headers”
 Press enter.
 
 We are set to run the project.

@@ -15,7 +15,7 @@ cd Database-React_with_API_projectv2.0
   e. Choose the **Database_restore.sql** file and click **Restore**.
 3. Configure the API
 Navigate to **Database-React_with_API_projectv2.0\API(Database_part)\IIUC_BUS_MANAGEMENT\api\utils**
-Open the database.py file.
+Open the **database.py** file.
 Rename DB_NAME from **IIUC_Bus_management** to your database name (**xyz**).
 
 4. Set Up the Virtual Environment

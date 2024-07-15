@@ -1,52 +1,61 @@
-Clone the database and the API part of the project:
-Clone this repository to your computer.
+Bus Management Project - API & Database
+This project includes a PostgreSQL database, Django API.
+Cloning and Setting Up the Project
+1. Clone the Repository
+Clone this repository to your local machine:
+```
+git clone <repository_url>
+cd Database-React_with_API_projectv2.0
+```
+2. Set Up the Database
 Open pgAdmin on your computer.
-Create a new database (e.g “xyz”)
-Click the right button on the database and select restore.
-Select the Format as “Directory”
-Chose the “Database_restore.sql” file and click restore.
-(The database is restored in your  pgAdmin)
+Create a new database (e.g., xyz).
+Right-click on the new database and select Restore.
+Set the Format to Directory.
+Choose the Database_restore.sql file and click Restore.
+3. Configure the API
+Navigate to Database-React_with_API_projectv2.0\API(Database_part)\IIUC_BUS_MANAGEMENT\api\utils.
+Open the database.py file.
+Rename DB_NAME from "IIUC_Bus_management" to your database name ("xyz").
+4. Set Up the Virtual Environment
+Open a terminal in the cloned directory (Database-React_with_API_projectv2.0).
+Create a virtual environment:
+```
+pip install virtualenv
+virtualenv env
+```
+2.
+Activate the virtual environment:
+On Windows:
+```
+env\Scripts\activate
+```
+Or
+```
+env\Scripts\activate.bat
+```
 
-Now goto 
-“Database-React_with_API_projectv2.0\API(Database_part)\IIUC_BUS_MANAGEMENT\api\utils”
-(in API(Database_part), in IIUC_BUS_MANAGEMENT, in api, in utils folder.)
-Open database.py file.
-Rename DB_NAME from :IIUC_Bus_management” to your database name (“xyz”)
+5. Install Necessary Dependencies
+Install Django Rest Framework:
+```
+pip install djangorestframework
+```
+Install psycopg2-binary:
+```
+pip install psycopg2-binary
+```
+Install corsheaders:
+```
+pip install django-cors-headers
+```
 
 
-Close everything
-Goto the file you have cloned (Database-React_with_API_projectv2.0).
-Open terminal in this directory.
+6. Run the Project
+Navigate to the directory where manage.py is located.
+Run the following command to start the server:
+```
+py manage.py runserver
+```
 
-Create Virtual Environment:
-Step 1 : “pip install virtualenv”
-Press enter.
-Step 2: “virtualenv env”
-Press enter.
-Virtual environment named “env” is created.
-Step 2 : “env\Scripts\activate”
-Or 
-“env\Scripts\activate.bat”
-Press enter.
-Virtual environment is activated.(don’t close this terminal yet)
+The database API is now hosted on the local host, and the React part can access it.
 
-Now install some necessary files:
-Step 1 : install django rest framework.
-In the terminal paste  “pip install djangorestframework”
-
-
-Press enter 
-Step 2 : 
-“pip install psycopg2-binary”
-Press enter.
-
-
-Step 3:
-“
-pip install django-cors-headers”
-Press enter.
-
-We are set to run the project.
-Goto to the directory where “manage.py” is located and run the command
-“py manage.py runserver”  .
-The database api is hosted in the local host now, and the react part can access this .

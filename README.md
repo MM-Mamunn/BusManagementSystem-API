@@ -1,5 +1,5 @@
 # Bus Management System - API & Database part
-T## his project includes a PostgreSQL database, Django API.
+## This project includes a PostgreSQL database, Django API.
 **Cloning and Setting Up the Project**
 1. Clone the Repository
 Clone this repository to your local machine:

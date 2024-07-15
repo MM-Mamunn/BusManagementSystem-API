@@ -8,24 +8,24 @@ git clone <repository_url>
 cd Database-React_with_API_projectv2.0
 ```
 2. Set Up the Database
-Open pgAdmin on your computer.
-Create a new database (e.g., xyz).
-Right-click on the new database and select Restore.
-Set the Format to Directory.
-Choose the Database_restore.sql file and click Restore.
+  a. Open pgAdmin on your computer.
+  b. Create a new database (e.g., xyz).
+  c. Right-click on the new database and select Restore.
+  d.Set the Format to Directory.
+  e. Choose the Database_restore.sql file and click Restore.
 3. Configure the API
 Navigate to Database-React_with_API_projectv2.0\API(Database_part)\IIUC_BUS_MANAGEMENT\api\utils.
 Open the database.py file.
 Rename DB_NAME from "IIUC_Bus_management" to your database name ("xyz").
+
 4. Set Up the Virtual Environment
 Open a terminal in the cloned directory (Database-React_with_API_projectv2.0).
-Create a virtual environment:
+  a. Create a virtual environment:
 ```
 pip install virtualenv
 virtualenv env
 ```
-2.
-Activate the virtual environment:
+  b. Activate the virtual environment:
 On Windows:
 ```
 env\Scripts\activate
@@ -50,9 +50,9 @@ pip install django-cors-headers
 ```
 
 
-6. Run the Project
+6. Run the Project: 
 Navigate to the directory where manage.py is located.
-Run the following command to start the server:
+Run the following command to host this to  the server:
 ```
 py manage.py runserver
 ```

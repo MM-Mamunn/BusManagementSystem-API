@@ -19,5 +19,5 @@ LANGUAGE plpgsql;
 ---query
 
 SELECT public.bus_insert(
-    '{"bus_id":"17", "category":"big","license_no":"CUM-LA 11-1284","assign":"student"}'::json
+    '{"bus_id":"1234", "category":"big","license_no":"CUM-LA 19-1814","assign":"student"}'::json
 );

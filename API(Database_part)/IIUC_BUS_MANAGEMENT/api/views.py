@@ -249,6 +249,32 @@ def search_driver(request):
             database.conn.commit()
             print(error)
             return Response({"message": "GET called but error", "error": error});
+@api_view(['GET','POST'])
+def search_maintanance(request):
+    if request.method == "GET":
+        try:
+            
+            page = request.GET.get("page",1)
+            limit = request.GET.get("limit", 5)
+            bus_id = request.GET.get("bus_id",3)
+            print(bus_id)
+            database.cur.execute("""
+                select maintanance_search2(%s);
+            """,(bus_id,))
+            # print(database.cur.fetchone()[0])
+            result = json.loads(json.dumps(database.cur.fetchone()[0]))
+            print(result)
+            database.conn.commit()
+            return Response({
+                "data": result
+            }
+            )
+
+
+        except(Exception, database.Error) as error:
+            database.conn.commit()
+            print(error)
+            return Response({"message": "GET called but error", "error": error});
 
 @api_view(['GET','POST'])
 def count_trip(request):
@@ -371,6 +397,32 @@ def bus_view(request):
             result = json.loads(json.dumps(database.cur.fetchone()[0]))
 
             database.conn.commit()
+            return Response({
+                "data": result
+            }
+            )
+
+
+        except(Exception, database.Error) as error:
+            database.conn.commit()
+            print(error)
+            return Response({"message": "GET called but error", "error": error});
+
+@api_view(['GET','POST'])
+def efficiency(request):
+     if request.method == "GET":
+        try:
+            page = request.GET.get("page",1)
+            limit = request.GET.get("limit", 5)
+            oil = request.GET.get("oil",40)
+            print(oil);
+            database.cur.execute("""
+                select efficiency(%s, %s,%s );
+            """,(page,limit,oil,))
+            result = json.loads(json.dumps(database.cur.fetchone()[0]))
+
+            database.conn.commit()
+            print(oil);
             return Response({
                 "data": result
             }
